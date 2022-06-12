@@ -1,0 +1,73 @@
+
+version: 2
+
+models:
+
+  - name: stg_greenery__addresses
+    description: "All user addresses"
+    columns:
+      - name: address_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_greenery__events
+    description: "User events"
+    columns:
+      - name: event_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_greenery__order_items
+    description: "Item-level order information"
+    columns:
+      - name: order_id
+        description: "Order ID"
+        tests:
+          - not_null
+      - name: product_id
+        description: "Product ID"
+        tests:
+          - not_null
+    
+  - name: stg_greenery__orders
+    description: "Orders table"
+    columns:
+      - name: order_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_greenery__products
+    description: "Product and inventory information"
+    columns:
+      - name: product_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_greenery__promos
+    description: "Promotion information"
+    columns:
+      - name: promo_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_greenery__users
+    description: "Users"
+    columns:
+      - name: user_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+
+    

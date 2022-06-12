@@ -1,0 +1,48 @@
+version: 2
+
+sources:
+
+  - name: src_greenery # name of the source 
+    schema: public # this is the schema our raw data lives in
+    database: dbt # this is the name of our database
+
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    freshness:
+      warn_after: {count: 24, period: hour}
+      error_after: {count: 48, period: hour}
+
+    tables:
+      - name: users 
+        loaded_at_field: created_at
+        description: >
+          Contains information about each user 
+
+      - name: addresses 
+        description: >
+          Contains delivery address information
+
+      - name: events 
+        loaded_at_field: created_at
+        description: >
+          Contains information on user on-platform events
+
+      - name: products 
+        description: >
+          Contains product and inventory information
+
+      - name: orders 
+        loaded_at_field: created_at
+        description: >
+          Contains order information
+
+      - name: order_items
+        description: >
+          Contains information on items in each order
+
+      - name: promos 
+        description: >
+          Contains promo code information
