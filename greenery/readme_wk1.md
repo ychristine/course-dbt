@@ -1,16 +1,16 @@
 **How many users do we have?**
 
-'''
+```
 select 
   count(distinct user_id) as total_users
 from dbt_christine_y.stg_greenery__users
-'''
+```
 
 **Answer:** 130
 
 **On average, how many orders do we receive per hour?**
 
-'''
+```
 with hourly_orders as (
   select
     checkout_date_utc::date as day,
@@ -24,13 +24,13 @@ final as (
   from hourly_orders
 )
 select * from final
-'''
+```
 
 **Answer:** 7.52
 
 **On average, how long does an order take from being placed to being delivered?**
 
-'''
+```
 with delivery_times as (
   select
     order_id,
@@ -44,13 +44,13 @@ final as (
   from delivery_times
   )
 select * from final;
-'''
+```
 
 **Answer:** 3 days 21 hrs
 
 **How many users have only made one purchase? Two purchases? Three+ purchases?**
 
-'''
+```
 with user_order_counts as (
   select
     user_id,
@@ -68,13 +68,13 @@ final as (
   order by 1 asc
   )
 select * from final;
-'''
+```
 
 **Answer:** 25 (1 purchase), 28 (2 purchases), 71 (3+ purchases)
 
 **On average, how many unique sessions do we have per hour?**
 
-'''
+```
 with sessions_per_hour as (
   select
     event_time_utc::date as session_date,
@@ -90,6 +90,6 @@ final as (
   order by 1 asc
   )
 select * from final;
-'''
+```
 
 **Answer:** 16.3
