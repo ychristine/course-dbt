@@ -6,7 +6,7 @@ models:
   - name: stg_greenery__addresses
     description: "All user addresses"
     columns:
-      - name: address_id
+      - name: address_guid
         description: "The primary key for this table"
         tests:
           - unique
@@ -15,20 +15,24 @@ models:
   - name: stg_greenery__events
     description: "User events"
     columns:
-      - name: event_id
+      - name: event_guid
         description: "The primary key for this table"
         tests:
           - unique
+          - not_null
+      - name: session_guid
+        description: "Session GUID"
+        tests:
           - not_null
 
   - name: stg_greenery__order_items
     description: "Item-level order information"
     columns:
-      - name: order_id
+      - name: order_guid
         description: "Order ID"
         tests:
           - not_null
-      - name: product_id
+      - name: product_guid
         description: "Product ID"
         tests:
           - not_null
@@ -36,7 +40,7 @@ models:
   - name: stg_greenery__orders
     description: "Orders table"
     columns:
-      - name: order_id
+      - name: order_guid
         description: "The primary key for this table"
         tests:
           - unique
@@ -45,11 +49,15 @@ models:
   - name: stg_greenery__products
     description: "Product and inventory information"
     columns:
-      - name: product_id
+      - name: product_guid
         description: "The primary key for this table"
         tests:
           - unique
           - not_null
+      - name: product_price
+        description: "The price of the product"
+        tests:
+          - positive_values
 
   - name: stg_greenery__promos
     description: "Promotion information"
@@ -63,7 +71,7 @@ models:
   - name: stg_greenery__users
     description: "Users"
     columns:
-      - name: user_id
+      - name: user_guid
         description: "The primary key for this table"
         tests:
           - unique

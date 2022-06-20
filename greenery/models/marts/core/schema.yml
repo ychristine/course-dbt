@@ -1,0 +1,56 @@
+
+version: 2
+
+models:
+
+  - name: dim_products
+    description: "Product level dimension with product information"
+    columns:
+      - name: product_guid
+        description: "Primary key"
+        tests:
+        - not_null
+        - unique
+
+  - name: dim_users
+    description: "User level dimension with user information"
+    columns: 
+      - name: user_guid
+        description: "Primary key"
+        tests:
+        - not_null
+        - unique
+
+  - name: fct_order_items
+    description: "Orders with item-level information including product name, quantity, prrice"
+    columns:
+      - name: order_guid
+        description: "order GUID"
+        tests:
+          - not_null
+      - name: product_guid
+        description: "product GUID"
+        tests:
+          - not_null
+      - name: product_quantity
+        description: "Number of items ordered"
+        tests:
+          - positive_values
+      - name: product_price
+        description: "Product price"
+        tests:
+          - positive_values
+
+  - name: fct_orders
+    description: "User events"
+    columns:
+      - name: order_guid
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: user_guid
+        description: "User GUID"
+        tests:
+          - not_null
+

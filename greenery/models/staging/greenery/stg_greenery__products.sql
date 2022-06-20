@@ -11,7 +11,7 @@ with products_source as (
 
 renamed_recast as (
     select
-        product_id
+        product_id as product_guid
         ,name as product_name
         ,price as product_price
         ,inventory as inventory_quantity

@@ -11,8 +11,8 @@ with order_items_source as (
 
 renamed_recast as (
     select
-        order_id
-        ,product_id
+        order_id as order_guid
+        ,product_id as product_guid
         ,quantity as product_quantity
     from order_items_source
 )

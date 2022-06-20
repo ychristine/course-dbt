@@ -11,9 +11,9 @@ with orders_source as (
 
 renamed_recast as (
     select
-        order_id
-        ,user_id
-        ,promo_id
+        order_id as order_guid
+        ,user_id as user_guid
+        ,lower(promo_id) as promo_id
         ,address_id
         ,created_at as checkout_date_utc
         ,order_cost
@@ -23,7 +23,7 @@ renamed_recast as (
         ,shipping_service
         ,estimated_delivery_at as est_delivery_date_utc
         ,delivered_at as delivered_date_utc
-        ,status
+        ,status as order_status
     from orders_source
 )
 

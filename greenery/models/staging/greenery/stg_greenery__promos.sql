@@ -11,8 +11,8 @@ with promos_source as (
 
 renamed_recast as (
     select
-        promo_id
-        ,discount as discount_amount
+        lower(promo_id) as promo_id
+        ,discount as promo_discount_amount
         ,status as promo_status
     from promos_source
 )

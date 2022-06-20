@@ -11,14 +11,14 @@ with users_source as (
 
 renamed_recast as (
     select
-        user_id
+        user_id as user_guid
         , first_name
         , last_name
         , email
         , phone_number
         , created_at as created_time_utc
         , updated_at as updated_time_utc
-        , address_id
+        , address_id as address_guid
     from users_source
 )
 

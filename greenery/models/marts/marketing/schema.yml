@@ -1,0 +1,14 @@
+
+version: 2
+
+models:
+
+  - name: fct_user_orders
+    description: "User-level order summary with total submitted orders & gmv, AOV, promo usage, first & last order information"
+    columns:
+      - name: user_guid
+        description: "order GUID"
+        tests:
+          - not_null
+
+
