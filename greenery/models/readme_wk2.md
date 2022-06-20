@@ -55,7 +55,7 @@ Basic assumptions on uniqueness of primary keys (if applicable), checking for nu
 
 **Did you find any “bad” data as you added and ran tests on your models? How did you go about either cleaning the data in the dbt model or adjusting your assumptions/tests?**
 
-Didn't find this through testing but I noticed that there was an issue with the zip codes where the leading 0s disappear (this happened to me in real life too!), fixed this with by adding a transformation to the staging table.
+Didn't find this through testing but I noticed that there was an issue with the zip codes where the leading 0s disappear (this happened to me in real life too!), fixed this by adding a transformation to the staging table.
 
 **Your stakeholders at Greenery want to understand the state of the data each day. Explain how you would ensure these tests are passing regularly and how you would alert stakeholders about bad data getting through.**
 I'm not sure exactly, but I would try to schedule the tests to run daily or as needed and email the output log to myself & data team.
