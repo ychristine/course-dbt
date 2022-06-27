@@ -10,7 +10,7 @@ select  a.user_guid
         ,submitted_gmv
         ,promo_discount_redeemed
         ,submitted_orders
-        ,submitted_gmv/submitted_orders::decimal as avg_order_value
+        ,round((submitted_gmv/submitted_orders)::numeric,2) as avg_order_value
         ,promo_orders
         ,shipped_orders
         ,delivered_orders

@@ -1,0 +1,47 @@
+
+version: 2
+
+models:
+
+  - name: fct_sessions
+    description: "Session level summary with total submitted orders & gmv, AOV, promo usage, first & last order information"
+    columns:
+      - name: session_guid
+        description: "session GUID"
+        tests:
+          - not_null
+          - unique
+
+  - name: fct_checkout
+    description: "Checkout events"
+    columns:
+      - name: order_guid
+        description: "order GUID"
+        tests:
+          - not_null
+          - unique
+      
+  - name: fct_item_conversions
+    description: "Checkout events with session GUID, user GUID, order GUID, and product information"
+    columns:
+      - name: surrogate_key
+        desciption: "Surrogate key based on session_guid and product_guid"
+        tests:
+          - not_null
+          - unique 
+
+      - name: product_quantity
+        description: "Quantity of product ordered"
+        tests:
+          - not_null
+
+  - name: dim_product_conversion
+    description: "Product conversion rates defined by # of unique sessions with checkout event / # of unique sessions with product pageview"
+    columns:
+      - name: product_guid
+        desciption: "Product id"
+        tests:
+          - not_null
+          - unique 
+
+    

@@ -1,0 +1,41 @@
+
+version: 2
+
+models:
+
+  - name: int_events_all
+    description: "Joins additional product information to events staging table"
+    columns:
+      - name: event_guid
+        description: "product GUID"
+        tests:
+          - not_null
+          - unique
+
+  - name: int_events_grouped
+    description: "Aggregate event counts per session"
+    columns:
+      - name: session_guid
+        description: "Session GUID"
+        tests:
+          - not_null
+          - unique
+
+  - name: int_events_ordered
+    description: "Events ordered per session"
+    columns:
+      - name: event_guid
+        description: "Event GUID"
+        tests:
+          - not_null
+          - unique          
+
+
+  - name: int_session_landing_page
+    description: "Session landing pages"
+    columns:
+      - name: session_guid
+        description: "Session GUID"
+        tests:
+          - not_null
+          - unique  

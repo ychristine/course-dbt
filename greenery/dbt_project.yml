@@ -24,7 +24,6 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
-
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
@@ -33,5 +32,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
     # Config indicated by + and applies to all files under models/example/
-    tutorial:
+    intermediate:
       +materialized: view
+
+
+on-run-end:
+  - "grant usage on schema {{ target.schema }} to group reporting"
+  - "grant select on all tables in schema {{ target.schema }} to group reporting"
+  - "alter default privileges in schema {{ target.schema }} grant select on tables to group reporting"
+

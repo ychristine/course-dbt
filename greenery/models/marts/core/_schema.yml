@@ -4,7 +4,7 @@ version: 2
 models:
 
   - name: dim_products
-    description: "Product level dimension with product information"
+    description: "Product-level dimension with product information"
     columns:
       - name: product_guid
         description: "Primary key"
@@ -22,7 +22,7 @@ models:
         - unique
 
   - name: fct_order_items
-    description: "Orders with item-level information including product name, quantity, prrice"
+    description: "Orders with item-level purchase information including product name, quantity, price"
     columns:
       - name: order_guid
         description: "order GUID"
