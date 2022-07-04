@@ -16,3 +16,15 @@ macros:
         type: <integer>
         description: "Rank value"
 
+  - name: distinct_sessions_with
+    description: "Select unique sessions where column value meets threshold"
+    docs:
+      show: true
+    arguments:
+      - name: column_name
+        type: <string>
+        description: "Column to check"
+      - name: threshold
+        type: <integer>
+        description: "Default 1"
+

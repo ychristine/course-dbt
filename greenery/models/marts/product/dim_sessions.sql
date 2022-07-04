@@ -28,5 +28,9 @@ WITH sessions as (
 select
   s.*
   ,row_number() over(partition by user_guid order by session_start_utc asc) as visit_number
+  ,date_trunc('year',session_start_utc) as year
+  ,date_trunc('month',session_start_utc) as month
+  ,date_trunc('week',session_start_utc) as week
+  ,date_trunc('day',session_start_utc) as day
 from sessions s
 order by session_start_utc desc
