@@ -1,7 +1,13 @@
 # PART 2: Modelling Challenge
 
 **How are our users moving through the product funnel?**
-578 sessions, 578 sessions with pageviews, 467 sessions with add to cart, 361 sessions with checkout
+
+| FUNNEL | SESSIONS WITH | CVR |
+| -------- | ------ | --------- |
+| PAGE VIEW | 578 | 100%  |
+| ADD TO CART| 467 | 80.9%    |
+| CHECKOUT | 361 | 62.5% |
+
 
 ```
 with sessions_agg as (
@@ -11,7 +17,11 @@ select sum(total_sessions) as total_sessions
        ,sum(checkout_sessions) as checkout_sessions
 from dbt_christine_y.daily_product_funnel
 )
-select * from sessions_agg
+select s.*
+       ,page_view_sessions / total_sessions as page_view_cvr
+       ,add_to_cart_sessions / total_sessions as add_to_cart_cvr
+       ,checkout_sessions / total_sessions as checkout_cvr
+from sessions_agg s
 
 ```
 
